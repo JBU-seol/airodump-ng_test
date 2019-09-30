@@ -6,7 +6,12 @@
 
 #define CHANNEL_STANDARD 2412
 #define BEACONS_TYPE 0x0080
-#define DATA_TYPE 0x0800
+#define PROBE_REQUEST_TYPE 0x0040
+#define PROBE_RESPONSE_TYPE 0x0050
+#define QOS_TYPE 0x4288
+#define QOS_NULL_TYPE 0x01c8
+#define NULL_TYPE1 0x1148
+#define NULL_TYPE2 0x0148
 
 typedef struct ieee80211_radiotap_header {
     uint8_t it_version;
@@ -51,10 +56,11 @@ struct data {
     uint8_t essid_len;
     char pwr;
     uint8_t beacons;
-    uint8_t bssid[6];
     uint8_t channel;
+    uint8_t bssid[6];
+    uint8_t s_add[6];
     uint8_t encrypt;
-    uint8_t essid[6];
-    uint8_t null[7];
+    uint8_t frame;
+    uint8_t essid[32];
 };
 
